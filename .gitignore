@@ -1,0 +1,5 @@
+/config/config.php
+/storage/rate-limits/*.json
+.env
+.DS_Store
+Thumbs.db
