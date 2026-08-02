@@ -314,7 +314,7 @@ Place the screenshots inside the `screenshots/` folder.
 
 ### Rate-Limit Response
 
-![Rate-Limit Response](screenshots/05-rate-limit-response.png)
+![Rate-Limit Response](screenshots/05-rate-limit-response.jpeg)
 
 ## API Source and Acknowledgment
 
