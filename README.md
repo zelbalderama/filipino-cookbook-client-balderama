@@ -298,7 +298,7 @@ Place the screenshots inside the `screenshots/` folder.
 
 ### Main Interface
 
-![Main Interface](screenshots/01-main-interface.png)
+![Main Interface](screenshots/01-main-interface.jpeg)
 
 ### Recipe Details
 
@@ -306,7 +306,7 @@ Place the screenshots inside the `screenshots/` folder.
 
 ### Search or Category Filter
 
-![Search or Category Filter](screenshots/03-search-filter.png)
+![Search or Category Filter](screenshots/03-search-filter.jpeg)
 
 ### Random Recipe
 
