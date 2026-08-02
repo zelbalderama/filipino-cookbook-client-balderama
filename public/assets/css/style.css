@@ -1,24 +1,44 @@
+/* =========================================================
+   COLOR VARIABLES
+   ========================================================= */
+
 :root {
     --green-900: #244b34;
     --green-800: #315f41;
     --green-700: #477a55;
     --green-200: #cfe0cf;
     --green-100: #eaf2e8;
+
     --cream: #fbf8ef;
     --cream-strong: #f3eddd;
     --white: #ffffff;
+
     --yellow: #f0d77c;
     --yellow-soft: #fbf1c9;
+
     --terracotta: #b96f55;
     --terracotta-soft: #f5e4dc;
+
     --text: #28322b;
     --muted: #69736b;
     --border: #ddd9ca;
-    --shadow: 0 8px 24px rgba(45, 67, 51, 0.08);
-    --shadow-small: 0 4px 14px rgba(45, 67, 51, 0.07);
+
+    --danger: #a64232;
     --danger-background: #fff5f1;
     --danger-border: #e9c4b7;
+
+    --success: #27633d;
+    --success-background: #edf8ef;
+    --success-border: #b8d9bf;
+
+    --shadow: 0 8px 24px rgba(45, 67, 51, 0.08);
+    --shadow-small: 0 4px 14px rgba(45, 67, 51, 0.07);
 }
+
+
+/* =========================================================
+   BASIC RESET
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -38,7 +58,8 @@ body {
 
 button,
 input,
-select {
+select,
+textarea {
     font: inherit;
 }
 
@@ -51,6 +72,56 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+img {
+    max-width: 100%;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   HEADINGS AND TEXT
+   ========================================================= */
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+h1 {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin-bottom: 10px;
+    color: var(--green-900);
+    font-size: clamp(2.15rem, 5vw, 3.35rem);
+    line-height: 1.08;
+}
+
+h2 {
+    color: var(--green-900);
+    font-size: 1.55rem;
+}
+
+h3 {
+    color: var(--green-900);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .site-header {
     position: sticky;
@@ -88,6 +159,12 @@ a {
     content: "";
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .header-link {
     padding: 9px 13px;
     border-radius: 10px;
@@ -102,12 +179,68 @@ a {
     outline: none;
 }
 
+
+/* =========================================================
+   API STATUS
+   ========================================================= */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 11px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.status-badge::before {
+    width: 8px;
+    height: 8px;
+    background: #999999;
+    border-radius: 50%;
+    content: "";
+}
+
+.status-online {
+    background: var(--success-background);
+    border-color: var(--success-border);
+    color: var(--success);
+}
+
+.status-online::before {
+    background: #3f9657;
+}
+
+.status-offline {
+    background: var(--danger-background);
+    border-color: var(--danger-border);
+    color: var(--danger);
+}
+
+.status-offline::before {
+    background: var(--danger);
+}
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
 .page-shell {
     width: min(1180px, calc(100% - 32px));
     min-height: calc(100vh - 145px);
     margin: 0 auto;
     padding: 38px 0 60px;
 }
+
+
+/* =========================================================
+   INTRO SECTION
+   ========================================================= */
 
 .intro {
     position: relative;
@@ -141,35 +274,7 @@ a {
     text-transform: uppercase;
 }
 
-h1,
-h2,
-h3,
-p {
-    margin-top: 0;
-}
-
-h1,
-h2,
-h3 {
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-h1 {
-    position: relative;
-    z-index: 1;
-    max-width: 760px;
-    margin-bottom: 10px;
-    color: var(--green-900);
-    font-size: clamp(2.15rem, 5vw, 3.35rem);
-    line-height: 1.08;
-}
-
-h2 {
-    color: var(--green-900);
-    font-size: 1.55rem;
-}
-
-.intro > p:last-child {
+.intro > p:last-of-type {
     position: relative;
     z-index: 1;
     max-width: 720px;
@@ -177,17 +282,82 @@ h2 {
     color: #556157;
 }
 
-.section-heading p,
-.recipe-summary p,
-.api-source p,
-.notice p,
-.dialog-meta {
-    color: var(--muted);
+
+/* =========================================================
+   CATEGORY SUMMARY
+   ========================================================= */
+
+.summary-list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
 }
+
+.summary-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 11px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid #e2d7aa;
+    border-radius: 999px;
+    color: var(--green-800);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   NOTICES
+   ========================================================= */
+
+.notice {
+    margin-bottom: 22px;
+    padding: 18px 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--yellow);
+    border-radius: 14px;
+    box-shadow: var(--shadow-small);
+}
+
+.notice h2,
+.notice h3 {
+    margin-bottom: 7px;
+}
+
+.notice p:last-child {
+    margin-bottom: 0;
+}
+
+.notice-error {
+    background: var(--danger-background);
+    border-color: var(--danger-border);
+    border-left-color: var(--terracotta);
+    color: var(--danger);
+}
+
+.notice-success {
+    background: var(--success-background);
+    border-color: var(--success-border);
+    border-left-color: var(--success);
+    color: var(--success);
+}
+
+
+/* =========================================================
+   RECIPE CONTROLS
+   ========================================================= */
 
 .controls {
     display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(190px, 0.7fr) auto;
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(190px, 0.7fr)
+        auto;
     gap: 14px;
     align-items: end;
     margin-bottom: 36px;
@@ -201,18 +371,22 @@ h2 {
 .field {
     display: grid;
     gap: 7px;
+    align-content: start;
 }
 
 .field label {
+    margin: 0;
     color: var(--green-900);
     font-size: 0.85rem;
     font-weight: 700;
 }
 
 .field input,
-.field select {
+.field select,
+.field textarea {
     width: 100%;
     min-height: 46px;
+    margin: 0;
     padding: 10px 13px;
     background: var(--cream);
     border: 1px solid #d7d8cb;
@@ -221,21 +395,49 @@ h2 {
     outline: none;
 }
 
-.field input::placeholder {
+.field textarea {
+    min-height: 130px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
     color: #92988f;
 }
 
 .field input:focus,
-.field select:focus {
+.field select:focus,
+.field textarea:focus {
     background: var(--white);
     border-color: var(--green-700);
     box-shadow: 0 0 0 3px rgba(71, 122, 85, 0.13);
 }
 
+.field small {
+    display: block;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+.input-action {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+}
+
 .control-actions {
     display: flex;
+    align-items: center;
     gap: 9px;
 }
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 .button {
     display: inline-flex;
@@ -248,13 +450,23 @@ h2 {
     cursor: pointer;
     font-weight: 700;
     white-space: nowrap;
-    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease,
+        opacity 0.15s ease;
 }
 
 .button:hover,
 .button:focus-visible {
     transform: translateY(-1px);
     outline: none;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.62;
+    transform: none;
 }
 
 .button-primary {
@@ -269,18 +481,6 @@ h2 {
     border-color: var(--green-900);
 }
 
-#random-recipe {
-    background: var(--yellow);
-    border-color: #dfc568;
-    color: var(--green-900);
-}
-
-#random-recipe:hover,
-#random-recipe:focus-visible {
-    background: #e7cc6c;
-    border-color: #d5b958;
-}
-
 .button-secondary {
     background: var(--white);
     border-color: var(--green-200);
@@ -292,6 +492,23 @@ h2 {
     background: var(--green-100);
     border-color: var(--green-200);
 }
+
+.button-highlight {
+    background: var(--yellow);
+    border-color: #dfc568;
+    color: var(--green-900);
+}
+
+.button-highlight:hover,
+.button-highlight:focus-visible {
+    background: #e7cc6c;
+    border-color: #d5b958;
+}
+
+
+/* =========================================================
+   RECIPE SECTION
+   ========================================================= */
 
 .recipes-section {
     scroll-margin-top: 90px;
@@ -313,6 +530,7 @@ h2 {
 
 .section-heading p {
     margin-bottom: 0;
+    color: var(--muted);
     font-size: 0.9rem;
 }
 
@@ -334,7 +552,10 @@ h2 {
     border: 1px solid var(--border);
     border-radius: 16px;
     box-shadow: var(--shadow-small);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease;
 }
 
 .recipe-row::before {
@@ -365,15 +586,6 @@ h2 {
     flex: 1;
 }
 
-.recipe-row .button {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.recipe-row[hidden] {
-    display: none;
-}
-
 .recipe-summary h3 {
     margin-bottom: 13px;
     color: var(--green-900);
@@ -387,6 +599,7 @@ h2 {
     flex-wrap: wrap;
     gap: 7px;
     margin-bottom: 0;
+    color: var(--muted);
     font-size: 0.86rem;
 }
 
@@ -398,29 +611,26 @@ h2 {
     font-weight: 700;
 }
 
-.notice {
-    padding: 22px;
+.recipe-row .button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.loading-card {
+    grid-column: 1 / -1;
+    padding: 28px;
     background: var(--white);
     border: 1px solid var(--border);
-    border-left: 5px solid var(--yellow);
     border-radius: 14px;
+    color: var(--muted);
+    text-align: center;
     box-shadow: var(--shadow-small);
 }
 
-.notice h2,
-.notice h3 {
-    margin-bottom: 7px;
-}
 
-.notice p:last-child {
-    margin-bottom: 0;
-}
-
-.notice-error {
-    background: var(--danger-background);
-    border-color: var(--danger-border);
-    border-left-color: var(--terracotta);
-}
+/* =========================================================
+   API SOURCE
+   ========================================================= */
 
 .api-source {
     margin-top: 48px;
@@ -437,11 +647,17 @@ h2 {
 
 .api-source p {
     margin-bottom: 0;
+    color: var(--muted);
 }
+
+
+/* =========================================================
+   RECIPE DIALOG
+   ========================================================= */
 
 .recipe-dialog {
     width: min(680px, calc(100% - 28px));
-    max-height: min(82vh, 760px);
+    max-height: min(86vh, 800px);
     padding: 0;
     overflow: auto;
     background: var(--cream);
@@ -456,6 +672,9 @@ h2 {
 }
 
 .dialog-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -479,6 +698,7 @@ h2 {
 }
 
 .icon-button {
+    flex: 0 0 auto;
     width: 38px;
     height: 38px;
     padding: 0;
@@ -551,6 +771,202 @@ h2 {
     white-space: pre-line;
 }
 
+
+/* =========================================================
+   ADD RECIPE DIALOG
+   ========================================================= */
+
+.add-dialog {
+    width: min(820px, calc(100% - 28px));
+}
+
+.add-form {
+    background: var(--cream);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 16px;
+    align-items: start;
+    padding: 24px;
+}
+
+/*
+   This keeps Category and Origin aligned at the top.
+   A field with helper text will no longer stretch the other field.
+*/
+.form-grid > .field {
+    align-self: start;
+    align-content: start;
+}
+
+.form-grid > .field label {
+    margin: 0;
+}
+
+.form-grid > .field select {
+    width: 100%;
+    min-height: 46px;
+    margin: 0;
+}
+
+.field-wide {
+    grid-column: 1 / -1;
+}
+
+.field-feedback {
+    display: block;
+    min-height: 0;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.76rem;
+}
+
+.field-feedback:empty {
+    display: none;
+}
+
+.field-feedback-error {
+    display: block;
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.field-control-error {
+    background: var(--danger-background) !important;
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 3px rgba(166, 66, 50, 0.12) !important;
+}
+
+
+/* =========================================================
+   INGREDIENT SELECTION
+   ========================================================= */
+
+.ingredient-field {
+    min-width: 0;
+    margin: 0;
+    padding: 18px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.ingredient-field legend {
+    padding: 0 7px;
+    color: var(--green-900);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.ingredient-field > p {
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.ingredient-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    max-height: 260px;
+    padding: 4px;
+    overflow-y: auto;
+}
+
+.ingredient-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    padding: 10px 11px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.87rem;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.ingredient-option:hover {
+    background: var(--green-100);
+    border-color: var(--green-200);
+}
+
+.ingredient-option input {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    accent-color: var(--green-800);
+}
+
+.ingredient-option span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.muted-text {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   ADD RECIPE FOOTER AND FORM MESSAGE
+   ========================================================= */
+
+.form-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    display: grid;
+    gap: 12px;
+    padding: 16px 24px;
+    background: rgba(251, 248, 239, 0.98);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -5px 18px rgba(45, 67, 51, 0.08);
+}
+
+.form-message {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.form-message-error {
+    background: var(--danger-background);
+    border-color: var(--danger-border);
+    color: var(--danger);
+}
+
+.form-message-success {
+    background: var(--success-background);
+    border-color: var(--success-border);
+    color: var(--success);
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 .site-footer {
     padding: 24px 16px;
     background: var(--green-900);
@@ -562,6 +978,11 @@ h2 {
 .site-footer p {
     margin: 0;
 }
+
+
+/* =========================================================
+   TABLET RESPONSIVE DESIGN
+   ========================================================= */
 
 @media (max-width: 1020px) {
     .controls {
@@ -575,7 +996,16 @@ h2 {
     .recipe-list {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+
+    .ingredient-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
+
+
+/* =========================================================
+   SMALL TABLET RESPONSIVE DESIGN
+   ========================================================= */
 
 @media (max-width: 760px) {
     .page-shell {
@@ -596,6 +1026,7 @@ h2 {
 
     .control-actions {
         grid-column: auto;
+        flex-wrap: wrap;
     }
 
     .recipe-list {
@@ -605,10 +1036,28 @@ h2 {
     .ingredient-list {
         grid-template-columns: 1fr;
     }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field-wide {
+        grid-column: auto;
+    }
+
+    .ingredient-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
+
+
+/* =========================================================
+   MOBILE RESPONSIVE DESIGN
+   ========================================================= */
 
 @media (max-width: 520px) {
     .header-inner {
+        width: min(100% - 22px, 1180px);
         min-height: 62px;
     }
 
@@ -616,8 +1065,18 @@ h2 {
         font-size: 1.2rem;
     }
 
+    .header-actions {
+        gap: 5px;
+    }
+
     .header-link {
-        font-size: 0.88rem;
+        padding: 7px;
+        font-size: 0.82rem;
+    }
+
+    .status-badge {
+        padding: 6px 8px;
+        font-size: 0.7rem;
     }
 
     .page-shell {
@@ -625,6 +1084,7 @@ h2 {
     }
 
     .intro {
+        padding: 25px 20px;
         border-radius: 15px;
     }
 
@@ -632,9 +1092,17 @@ h2 {
         padding: 15px;
     }
 
+    .input-action {
+        grid-template-columns: 1fr;
+    }
+
     .control-actions {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .control-actions .button:last-child {
+        grid-column: 1 / -1;
     }
 
     .recipe-list {
@@ -645,8 +1113,26 @@ h2 {
         min-height: 180px;
     }
 
+    .dialog-header,
     .dialog-content,
-    .dialog-header {
+    .form-grid {
         padding: 18px;
+    }
+
+    .form-footer {
+        padding: 14px 18px;
+    }
+
+    .ingredient-options {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-actions .button {
+        width: 100%;
     }
 }
